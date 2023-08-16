@@ -570,6 +570,19 @@ local theme = lush(function(injected_functions)
         -- FzfLuaBufFlagAlt {},
         -- FzfLuaTabTitle {},
         -- FzfLuaTabMarker {},
+
+        -- oil.nvim
+        --
+        OilDir { Directory },                -- Directories in an oil buffer
+        OilDirIcon { Directory },            -- Icon for directories
+        OilSocket { Keyword },               -- Socket files in an oil buffer
+        OilLink { Underlined, fg = yellow }, -- Soft links in an oil buffer
+        OilFile { fg = Normal.fg },          -- Normal files in an oil buffer
+        OilCreate { DiffAdd },               -- Create action in the oil preview window
+        OilDelete { DiffDelete },            -- Delete action in the oil preview window
+        OilMove { DiagnosticWarn },          -- Move action in the oil preview window
+        OilCopy { DiagnosticWarn },          -- Copy action in the oil preview window
+        OilChange { DiffChange },            -- Change action in the oil preview window
     }
 end)
 

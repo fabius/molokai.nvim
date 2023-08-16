@@ -12,6 +12,7 @@ Using [lazy](https://github.com/folke/lazy.nvim) for example:
 ```lua
 {
     "fabius/molokai.nvim",
+    dependencies = "rktjmp/lush.nvim",
     lazy = false,
     priority = 1000,
 },
