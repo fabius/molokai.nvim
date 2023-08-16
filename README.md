@@ -23,3 +23,13 @@ Using [lazy](https://github.com/folke/lazy.nvim) for example:
 vim.cmd "colorscheme molokai-light"
 vim.cmd "colorscheme molokai"
 ```
+
+### Lualine
+
+```lua
+require('lualine').setup {
+    options = {
+        theme = 'molokai'
+    }
+}
+```
