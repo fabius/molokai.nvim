@@ -43,9 +43,9 @@ local yellow5 = hsl(50, 11, 59)
 local theme = lush(function(injected_functions)
     local sym = injected_functions.sym
     return {
-        Normal { bg = black3, fg = white3, },                 -- Normal text
-        NormalNC { Normal, bg = yellow4.mix(Normal.bg, 50) }, -- normal text in non-current windows
-        ColorColumn { bg = yellow4 },                         -- Columns set with 'colorcolumn'
+        Normal { bg = black3, fg = white3, }, -- Normal text
+        NormalNC { Normal },                  -- normal text in non-current windows
+        ColorColumn { bg = yellow4 },         -- Columns set with 'colorcolumn'
         -- Conceal {},                           -- Placeholder characters substituted for concealed text (see 'conceallevel')
         -- Cursor {},                                -- Character under the cursor
         CurSearch { fg = black, bg = orange, gui = "bold", }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
