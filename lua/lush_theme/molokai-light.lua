@@ -576,6 +576,19 @@ local theme = lush(function(injected_functions)
         OilMove { DiagnosticWarn },          -- Move action in the oil preview window
         OilCopy { DiagnosticWarn },          -- Copy action in the oil preview window
         OilChange { DiffChange },            -- Change action in the oil preview window
+
+        -- nvim-bqf
+        --
+        BqfPreviewFloat { NormalFloat },
+        BqfPreviewBorder { FloatBorder },
+        BqfPreviewTitle { Title },
+        -- BqfPreviewThumb { PmenuThumb },
+        -- BqfPreviewSbar { PmenuSbar },
+        -- BqfPreviewCursor { Cursor },
+        BqfPreviewCursorLine { CursorLine },
+        BqfPreviewRange { IncSearch },
+        BqfPreviewBufLabel { BqfPreviewRange },
+        BqfSign { fg = blue, },
     }
 end)
 
