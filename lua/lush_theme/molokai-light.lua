@@ -63,29 +63,29 @@ local theme = lush(function(injected_functions)
         -- TermCursorNC   { }, -- Cursor in an unfocused terminal
         -- ErrorMsg       { }, -- Error messages on the command line
         -- VertSplit      { }, -- Column separating vertically split windows
-        Folded { bg = yellow4, fg = yellow },             -- Line used for closed folds
+        Folded { bg = yellow4, fg = yellow },              -- Line used for closed folds
         -- FoldColumn     { }, -- 'foldcolumn'
-        SignColumn {},                                    -- Column where |signs| are displayed
-        IncSearch { CurSearch, },                         -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-        Substitute { CurSearch, },                        -- |:substitute| replacement text highlighting
-        LineNr { fg = yellow5, },                         -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-        LineNrAbove { LineNr },                           -- Line number for when the 'relativenumber' option is set, above the cursor line
-        LineNrBelow { LineNr },                           -- Line number for when the 'relativenumber' option is set, below the cursor line
-        CursorLineNr { fg = white3, bg = CursorLine.bg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+        SignColumn {},                                     -- Column where |signs| are displayed
+        IncSearch { CurSearch, },                          -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+        Substitute { CurSearch, },                         -- |:substitute| replacement text highlighting
+        LineNr { fg = yellow5, },                          -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+        LineNrAbove { LineNr },                            -- Line number for when the 'relativenumber' option is set, above the cursor line
+        LineNrBelow { LineNr },                            -- Line number for when the 'relativenumber' option is set, below the cursor line
+        CursorLineNr { fg = white3, bg = CursorLine.bg, }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
         -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
-        CursorLineSign { bg = CursorLine.bg },            -- Like SignColumn when 'cursorline' is set for the cursor line
-        MatchParen { fg = red2, gui = "underline" },      -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-        Title { fg = yellow, gui = "bold", },             -- Titles for output from ":set all", ":autocmd" etc.
+        CursorLineSign { bg = CursorLine.bg },             -- Like SignColumn when 'cursorline' is set for the cursor line
+        MatchParen { fg = red2, gui = "underline" },       -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+        Title { fg = yellow, gui = "bold", },              -- Titles for output from ":set all", ":autocmd" etc.
         -- ModeMsg        { }, -- 'showmode' message (e.g., "-- INSERT -- ")
-        MsgArea { Normal, },                              -- Area for messages and cmdline
+        MsgArea { Normal, },                               -- Area for messages and cmdline
         -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
         -- MoreMsg        { }, -- |more-prompt|
-        NonText { fg = yellow5 },                          -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-        NormalFloat { Normal, bg = grey, },                -- Normal text in floating windows.
-        FloatBorder { NormalFloat, },                      -- Border of floating windows.
-        FloatTitle { Title },                              -- Title of floating windows.
-        Pmenu { bg = grey },                               -- Popup menu: Normal item.
-        PmenuSel { bg = blue, fg = black, gui = "bold", }, -- Popup menu: Selected item.
+        NonText { fg = yellow5 },                             -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+        NormalFloat { Normal, bg = grey, },                   -- Normal text in floating windows.
+        FloatBorder { NormalFloat, },                         -- Border of floating windows.
+        FloatTitle { Title },                                 -- Title of floating windows.
+        Pmenu { bg = grey },                                  -- Popup menu: Normal item.
+        PmenuSel { bg = yellow5, fg = white, gui = "bold", }, -- Popup menu: Selected item.
         -- PmenuKind {},                                      -- Popup menu: Normal item "kind"
         -- PmenuKindSel   { }, -- Popup menu: Selected item "kind"
         -- PmenuExtra     { }, -- Popup menu: Normal item "extra text"
@@ -135,11 +135,11 @@ local theme = lush(function(injected_functions)
         Function { fg = yellow2 },  --   Function name (also: methods for classes)
 
         Statement { fg = red2 },    -- (*) Any statement
-        -- Conditional { fg = blue },    --   if, then, else, endif, switch, etc.
+        Conditional { fg = red2 },  --   if, then, else, endif, switch, etc.
         -- Repeat { fg = blue },         --   for, do, while, etc.
         -- Label { fg = blue },          --   case, default, etc.
         -- Operator { fg = blue },       --   "sizeof", "+", "*", etc.
-        Keyword { fg = blue, gui = "italic", }, --   any other keyword
+        Keyword { fg = red2 }, --   any other keyword
         -- Exception { fg = blue },                --   try, catch, throw
 
         PreProc { fg = blue, gui = "italic", },  -- (*) Generic Preprocessor
@@ -257,6 +257,7 @@ local theme = lush(function(injected_functions)
         -- sym("@label")             { }, -- Label
         -- sym("@operator")          { }, -- Operator
         sym("@keyword") { Keyword },
+        sym("@keyword.function") { fg = blue },
         sym("@keyword.return") { fg = red2 },
         sym("@keyword.sql") { fg = red2 },
         sym("@keyword.dockerfile") { gui = "bold" },
@@ -279,7 +280,7 @@ local theme = lush(function(injected_functions)
         sym("@lsp.type.function") { Function },                                     -- @lsp.type.function xxx links to Function
         sym("@lsp.type.method") { Function },                                       -- @lsp.type.method xxx links to Function
         sym("@lsp.type.namespace") { Identifier },                                  -- @lsp.type.namespace xxx links to Identifier
-        sym("@lsp.type.property") { Identifier },                                   -- @lsp.type.property xxx links to Identifier
+        sym("@lsp.type.property") { fg = red2 },                                    -- @lsp.type.property xxx links to Identifier
         sym("@lsp.type.variable") { Identifier },                                   -- @lsp.type.variable xxx links to Identifier
         sym("@lsp.type.macro") { Macro },                                           -- @lsp.type.macro xxx links to Macro
         sym("@lsp.type.class") { Structure },                                       -- @lsp.type.class xxx links to Structure
@@ -406,25 +407,25 @@ local theme = lush(function(injected_functions)
         NeogitChangeModified { fg = blue, gui = "bold" },
         NeogitChangeAdded { fg = yellow2, gui = "bold" },
         NeogitChangeDeleted { fg = red, gui = "bold" },
-        NeogitChangeRenamed { fg = blue, gui = "bold" },
+        NeogitChangeRenamed { fg = orange, gui = "bold" },
         NeogitChangeUpdated { fg = blue, gui = "bold" },
-        NeogitChangeCopied { fg = blue, gui = "bold" },
+        NeogitChangeCopied { fg = orange, gui = "bold" },
         NeogitChangeBothModified { fg = blue, gui = "bold" },
         NeogitChangeNewFile { fg = yellow2, gui = "bold" },
         --
         -- SIGNS FOR LINE HIGHLIGHTING
         -- Used to highlight different sections of the status buffer or commit buffer.
-        NeogitHunkHeader { Normal },
-        NeogitDiffContext { Normal },
-        NeogitDiffAdd { DiffAdd },
-        NeogitDiffDelete { DiffDelete },
-        NeogitDiffHeader { DiffChange },
+        NeogitHunkHeader { bg = DiffChange.bg, fg = DiffChange.fg.mix(Normal.bg, 70) },
+        NeogitDiffContext { bg = Normal.bg, fg = Normal.fg.mix(Normal.bg, 70) },
+        NeogitDiffAdd { bg = DiffAdd.bg, fg = DiffAdd.fg.mix(Normal.bg, 70) },
+        NeogitDiffDelete { bg = DiffDelete.bg, fg = DiffDelete.fg.mix(Normal.bg, 70) },
+        NeogitDiffHeader { bg = DiffChange.bg, fg = DiffChange.fg.mix(Normal.bg, 70) },
         --
         -- SIGNS FOR LINE HIGHLIGHTING CURRENT CONTEXT
         -- These are essentially an accented version of the above highlight groups. Only
         -- applies to the current context the cursor is within.
         NeogitHunkHeaderHighlight { DiffChange },
-        NeogitDiffContextHighlight { Normal },
+        NeogitDiffContextHighlight { bg = Normal.bg, },
         NeogitDiffAddHighlight { DiffAdd },
         NeogitDiffDeleteHighlight { DiffDelete },
         -- NeogitDiffHeaderHighlight { DiffChange },
