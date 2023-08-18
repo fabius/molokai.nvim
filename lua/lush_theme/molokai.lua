@@ -589,6 +589,23 @@ local theme = lush(function(injected_functions)
         BqfPreviewRange { IncSearch },
         BqfPreviewBufLabel { BqfPreviewRange },
         BqfSign { fg = blue, },
+
+        -- todo-comments.nvim
+        --
+        TodoBgTODO { bg = blue, fg = black, gui = "bold" },
+        TodoFgTODO { fg = blue, gui = "italic" },
+        TodoBgFIX { bg = red, fg = black, gui = "bold" },
+        TodoFgFIX { fg = red, gui = "italic" },
+        TodoBgWARN { bg = orange, fg = black, gui = "bold" },
+        TodoFgWARN { fg = orange, gui = "italic" },
+        TodoBgHACK { bg = orange, fg = black, gui = "bold" },
+        TodoFgHACK { fg = orange, gui = "italic" },
+        TodoBgPERF { bg = purple, fg = black, gui = "bold" },
+        TodoFgPERF { fg = purple, gui = "italic" },
+        TodoBgNOTE { bg = yellow2, fg = black, gui = "bold" },
+        TodoFgNOTE { fg = yellow2, gui = "italic" },
+        TodoBgTEST { bg = yellow3, fg = black, gui = "bold" },
+        TodoFgTEST { fg = yellow3, gui = "italic" },
     }
 end)
 
